@@ -18,7 +18,7 @@
 #ifdef PADDLE2ONNX_LIB
 #define PADDLE2ONNX_DECL __declspec(dllexport)
 #else
-#define PADDLE2ONNX_DECL __declspec(dllimport)
+#define PADDLE2ONNX_DECL
 #endif  // PADDLE2ONNX_LIB
 #else
 #define PADDLE2ONNX_DECL __attribute__((visibility("default")))
