@@ -47,7 +47,7 @@ if(NOT TARGET onnx_proto)
   endif()
 
   set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-  add_subdirectory(${PROJECT_SOURCE_DIR}/third/onnx)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/third/onnx EXCLUDE_FROM_ALL)
 endif()
 
 include_directories(${PROJECT_SOURCE_DIR})
@@ -104,22 +104,11 @@ endif()
 #    FILES_MATCHING
 #    PATTERN "converter.h"
 #)
-if(WIN32)
-  install(
-    TARGETS paddle2onnx
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION lib
-  )
-else()
-  install(
-    TARGETS paddle2onnx
-    LIBRARY DESTINATION lib
-  )
-endif()
+install(
+  TARGETS paddle2onnx
+)
 install(
     FILES paddle2onnx/converter.h
-    ${PROJECT_SOURCE_DIR}/paddle2onnx/converter.h
     DESTINATION include/paddle2onnx
 )
 
