@@ -11,10 +11,6 @@ set(ONNX_CUSTOM_PROTOC_PATH "" CACHE STRING "Set yourself Protobufc path")
 if(PADDLE2ONNX_DEBUG)
   add_definitions(-DPADDLE2ONNX_DEBUG)
 endif()
-# Set C++11 as standard for the whole project
-if(NOT MSVC)
-  set(CMAKE_CXX_STANDARD 11)
-endif(NOT MSVC)
 
 # setting max opset version for onnx
 # if you build from other version of onnx
@@ -97,6 +93,8 @@ else ()
     set_target_properties(paddle2onnx PROPERTIES VERSION ${PADDLE2ONNX_VERSION})
     TARGET_LINK_LIBRARIES(paddle2onnx p2o_paddle_proto onnx)
 endif()
+
+set_target_properties(paddle2onnx PROPERTIES CXX_STANDARD 11)
 
 #install(
 #    DIRECTORY ${PROJECT_SOURCE_DIR}/paddle2onnx
